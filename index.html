@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul id="usuarios"></ul>
+    <br />
+    <div>
+      <a href="register.html"><button>Cadastrar Novo Usuário</button></a>
+    </div>
+    <br />
+    <div>
+      <a href="atualizar.html"><button>Atualizar Usuário</button></a>
+    </div>
+    <br />
+    <div>
+      <a href="remover.html"><button>Remover Usuário</button></a>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script>
+    console.log("qualquer");
+    axios
+      .get("http://localhost:3000/users")
+      .then(response => criaListaDinamica(response.data))
+      .catch(error => console.log(error));
+
+    const criaListaDinamica = alunos => {
+      const ulAlunos = document.getElementById("usuarios");
+      alunos.map(aluno => {
+        const listaAluno = document.createElement("li");
+        listaAluno.innerHTML = `Nome: ${aluno.nome}`;
+        ulAlunos.appendChild(listaAluno);
+      });
+    };
+  </script>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div>
+      <form action="" method="POST">
+        <div>
+          <label for="">Id do user a Atualizar: </label
+          ><input type="text" id="id" />
+        </div>
+        <br />
+        <div>
+          <label for="">Novo Nome: </label><input type="text" id="newName" />
+        </div>
+        <input type="button" value="Enviar" onclick="atualiza()" />
+      </form>
+    </div>
+    <br />
+    <div>
+      <a href="index.html"><button>Voltar ao Index</button></a>
+    </div>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script>
+    async function atualiza() {
+      var filterId = {
+        id: document.getElementById("id").value
+      };
+      var contentName = {
+        name: document.getElementById("newName").value
+      };
+      const res = await axios.put("http://127.0.0.1:3000/users", contentName, {
+        params: filterId
+      });
+      console.log(res);
+    }
+  </script>
+</html>

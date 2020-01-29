@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="" method="POST">
+      <div><label for="">Nome: </label><input type="text" id="nome" /></div>
+      <input type="button" value="Enviar" onclick="upload()" />
+    </form>
+    <br />
+    <a href="index.html"><button>Voltar ao Index</button></a>
+  </body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+  <script>
+    async function upload() {
+      data = {
+        name: document.getElementById("nome").value
+      };
+      console.log(data);
+      const res = await axios.post("http://127.0.0.1:3000/users", data);
+    }
+  </script>
+</html>
